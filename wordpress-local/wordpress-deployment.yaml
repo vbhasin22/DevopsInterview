@@ -47,10 +47,12 @@ spec:
         - image: wordpress:5.5.1-apache
           name: wordpress-local
           env:
-            - name: WORDPRESS_DB_HOST
-              value: wordpress-mysql
-            - name: WORDPRESS_DB_PASSWORD
+            - name: WORDPRESS_DB_USER
               value: test
+            - name: WORDPRESS_DB_NAME
+              value: database
+            - name: WORDPRESS_DB_PASSWORD
+              value: password
           ports:
             - containerPort: 80
               name: wordpress-local
