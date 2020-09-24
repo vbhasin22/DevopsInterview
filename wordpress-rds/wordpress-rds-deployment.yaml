@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wordpress-rds
+spec:
+  replicas: 1
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app: wordpress-rds
+  template:
+    metadata:
+      labels:
+        app: wordpress-rds
+    spec:
+      containers:
+      - image: https://hub.docker.com/_/wordpress
+        name: wordpress-rds
+        ports:
+        - containerPort: 80
