@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: wordpress-mysql
   labels:
-    app: wordpress
+    app: wordpress-local
 spec:
   ports:
     - port: 3306
@@ -14,9 +14,9 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: mysql-pv-claim
+  name: mysql-pv-claim-local
   labels:
-    app: wordpress
+    app: wordpress-local
 spec:
   accessModes:
     - ReadWriteOnce
@@ -29,18 +29,18 @@ kind: Deployment
 metadata:
   name: wordpress-mysql
   labels:
-    app: wordpress
+    app: wordpress-local
 spec:
   selector:
     matchLabels:
-      app: wordpress
+      app: wordpress-local
       tier: mysql
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
-        app: wordpress
+        app: wordpress-local
         tier: mysql
     spec:
       containers:
